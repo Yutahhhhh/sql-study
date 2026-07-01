@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+code, pre, .font-mono {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+.glossary-link {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.glossary-link:hover {
+  text-decoration-style: solid;
+}
+
+.result-row-enter {
+  animation: row-fade-in 0.25s ease-out;
+}
+
+@keyframes row-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-flash-success {
+  animation: flash-success 1.2s ease-out;
+}
+
+@keyframes flash-success {
+  0% {
+    background-color: rgba(16, 185, 129, 0.35);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.status-flash-error {
+  animation: flash-error 1.2s ease-out;
+}
+
+@keyframes flash-error {
+  0% {
+    background-color: rgba(244, 63, 94, 0.35);
+  }
+  100% {
+    background-color: transparent;
+  }
+}

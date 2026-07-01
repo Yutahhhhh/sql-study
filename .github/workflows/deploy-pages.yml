@@ -1,0 +1,67 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Install dependencies
+        run: pnpm --dir sql-learning-app install --frozen-lockfile
+
+      - name: Build
+        run: |
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          if [ "$repo_name" = "${GITHUB_REPOSITORY_OWNER}.github.io" ]; then
+            base_path="/"
+          else
+            base_path="/$repo_name/"
+          fi
+
+          echo "Building with BASE_PATH=$base_path"
+          BASE_PATH="$base_path" pnpm --dir sql-learning-app build
+          cp sql-learning-app/dist/index.html sql-learning-app/dist/404.html
+          touch sql-learning-app/dist/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: sql-learning-app/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5

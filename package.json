@@ -1,0 +1,21 @@
+{
+  "name": "sql-study",
+  "version": "1.0.0",
+  "description": "SQL Learning Platform with real in-browser PostgreSQL/MySQL execution",
+  "scripts": {
+    "dev": "cd sql-learning-app && pnpm run dev",
+    "build": "cd sql-learning-app && pnpm run build",
+    "preview": "cd sql-learning-app && pnpm run preview",
+    "install-all": "cd sql-learning-app && pnpm install"
+  },
+  "keywords": [
+    "sql",
+    "postgresql",
+    "mysql",
+    "learning",
+    "database"
+  ],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@7.33.7+sha512.7afe2410642b39c698df46da4ce5c7231a5cce360698d69f8cf8f42257d40b3e43f231053b07b8de849fd4ffbf4a71ff57b835137777a352388f3d3da747200e"
+}
