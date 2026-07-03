@@ -3,6 +3,7 @@ import type { PlaygroundConfig, PlaygroundManifest } from '../types/playground';
 const playgroundLoaders: Record<string, () => Promise<{ default: PlaygroundConfig }>> = {
   'postgres-scratchpad': () => import('./postgres-scratchpad/config'),
   'mysql-scratchpad': () => import('./mysql-scratchpad/config'),
+  'permissions-lab': () => import('./permissions-lab/config'),
 };
 
 export const playgroundManifest: PlaygroundManifest[] = [
@@ -23,6 +24,15 @@ export const playgroundManifest: PlaygroundManifest[] = [
     color: 'orange',
     path: '/playground/mysql-scratchpad',
     dialect: 'mysql',
+  },
+  {
+    slug: 'permissions-lab',
+    title: '権限ラボ (ロールとGRANT)',
+    description: '本物のPostgreSQL上でCREATE ROLE / GRANT / SET ROLE / RLSを自由に試す',
+    icon: 'KeyRound',
+    color: 'purple',
+    path: '/playground/permissions-lab',
+    dialect: 'postgres',
   },
 ];
 

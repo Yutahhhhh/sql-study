@@ -149,7 +149,17 @@ export interface ChallengeConfig {
   icon: string;
   color: string;
   scenario: string;
-  topic: 'db-design' | 'indexing' | 'performance' | 'constraints' | 'subqueries';
+  topic:
+    | 'db-design'
+    | 'indexing'
+    | 'performance'
+    | 'constraints'
+    | 'subqueries'
+    | 'web-dev'
+    | 'release'
+    | 'operations'
+    | 'incident'
+    | 'security';
   difficulty: 'intermediate' | 'advanced';
   dialects: SqlDialect[];
   requirements: ChallengeRequirement[];

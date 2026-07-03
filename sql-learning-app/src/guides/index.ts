@@ -7,6 +7,11 @@ const guideLoaders: Record<string, () => Promise<{ default: GuideConfig }>> = {
   'query-performance-and-explain': () => import('./query-performance-and-explain/config'),
   'constraints-and-integrity': () => import('./constraints-and-integrity/config'),
   'subqueries-and-complex-queries': () => import('./subqueries-and-complex-queries/config'),
+  'web-app-sql-patterns': () => import('./web-app-sql-patterns/config'),
+  'release-day-pitfalls': () => import('./release-day-pitfalls/config'),
+  'production-db-operations': () => import('./production-db-operations/config'),
+  'incident-investigation-playbook': () => import('./incident-investigation-playbook/config'),
+  'roles-and-permissions': () => import('./roles-and-permissions/config'),
 };
 
 export const guideManifest: GuideManifest[] = [
@@ -63,6 +68,51 @@ export const guideManifest: GuideManifest[] = [
     color: 'purple',
     badge: 'サブクエリ',
     path: '/guides/subqueries-and-complex-queries',
+  },
+  {
+    slug: 'web-app-sql-patterns',
+    title: 'Web開発で毎日使うSQLパターン',
+    description: 'ページネーション・検索・UPSERT・論理削除・トランザクション境界など実装の定番パターンを整理する',
+    icon: 'AppWindow',
+    color: 'sky',
+    badge: 'Web開発',
+    path: '/guides/web-app-sql-patterns',
+  },
+  {
+    slug: 'release-day-pitfalls',
+    title: '本番リリース直後にぶち当たるDB問題',
+    description: 'データ量で露見する遅いクエリ、コネクション枯渇、マイグレーションのロック、重複データなどの典型トラブルと対策',
+    icon: 'Siren',
+    color: 'blue',
+    badge: 'リリース直後',
+    path: '/guides/release-day-pitfalls',
+  },
+  {
+    slug: 'production-db-operations',
+    title: '本番DBの運用実務',
+    description: 'スロークエリ監視、VACUUM/ANALYZE、バックアップとリストア、安全なデータパッチ、大量データの扱いを整理する',
+    icon: 'Settings2',
+    color: 'orange',
+    badge: '運用',
+    path: '/guides/production-db-operations',
+  },
+  {
+    slug: 'incident-investigation-playbook',
+    title: 'DB障害の調査と解消プレイブック',
+    description: 'pg_stat_activityでの現状把握、ロック・長時間トランザクションの特定と解消、デッドロック、ディスクフルまでの手順書',
+    icon: 'Stethoscope',
+    color: 'emerald',
+    badge: '障害対応',
+    path: '/guides/incident-investigation-playbook',
+  },
+  {
+    slug: 'roles-and-permissions',
+    title: 'ユーザー権限とロール設計',
+    description: 'ロール・GRANT/REVOKE・アプリ用最小権限・読み取り専用ユーザー・RLSまで、DB権限の設計を学ぶ',
+    icon: 'KeyRound',
+    color: 'purple',
+    badge: '権限',
+    path: '/guides/roles-and-permissions',
   },
 ];
 
